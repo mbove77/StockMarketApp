@@ -26,11 +26,10 @@ class StockRepositoryImp @Inject constructor(
     private val db: StockDataBase,
     private val stockListParser: CSVParser<StockList>
 ): StockRepository {
+
     private val dao = db.dao
-    override suspend fun getStockList(
-        fetchFromRemote: Boolean,
-        query: String,
-    ): Flow<Resource<List<StockList>>> {
+
+    override suspend fun getStockList(fetchFromRemote: Boolean, query: String): Flow<Resource<List<StockList>>> {
        return flow {
 
            emit(Resource.Loading(true))
@@ -45,8 +44,8 @@ class StockRepositoryImp @Inject constructor(
            }
 
            val remoteStockList = try {
-               val respose = api.getStockList(BuildConfig.API_KEY)
-               stockListParser.parse(respose.byteStream())
+               val response = api.getStockList(BuildConfig.API_KEY)
+               stockListParser.parse(response.byteStream())
            } catch (e: IOException) {
               e.printStackTrace()
               emit(Resource.Error(message = e.message.toString()))

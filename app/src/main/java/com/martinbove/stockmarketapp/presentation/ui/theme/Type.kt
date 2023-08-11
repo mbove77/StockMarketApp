@@ -1,4 +1,4 @@
-package com.martinbove.stockmarketapp.ui.theme
+package com.martinbove.stockmarketapp.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

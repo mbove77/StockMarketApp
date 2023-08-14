@@ -23,11 +23,16 @@ class StockListViewModel @Inject constructor(private val stockRepository: StockR
     var state by mutableStateOf(StockListState())
     private var searchJob: Job? = null
 
+    init {
+        getStockList()
+    }
+
     fun onEvent(events: StockListEvents) {
         when(events) {
             is StockListEvents.Refresh -> {
                 getStockList(fetchFromRemote = true)
             }
+
             is StockListEvents.OnSearchQueryChange -> {
                 state = state.copy(searchQuery = events.query)
                 searchJob?.cancel()
@@ -52,7 +57,9 @@ class StockListViewModel @Inject constructor(private val stockRepository: StockR
                                 state = state.copy(companies = stockList)
                             }
                         }
+
                         is Resource.Error -> Unit
+
                         is Resource.Loading -> {
                             state = state.copy(isLoading = result.isLoading)
                         }

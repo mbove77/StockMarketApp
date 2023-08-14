@@ -1,6 +1,6 @@
 package com.martinbove.stockmarketapp.domain.repository
 
-import com.martinbove.stockmarketapp.domain.model.StockList
+import com.martinbove.stockmarketapp.domain.model.Stock
 import com.martinbove.stockmarketapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
@@ -11,5 +11,5 @@ import kotlinx.coroutines.flow.Flow
  */
 
 interface StockRepository {
-    suspend fun getStockList(fetchFromRemote: Boolean, query: String): Flow<Resource<List<StockList>>>
+    suspend fun getStockList(fetchFromRemote: Boolean, query: String): Flow<Resource<List<Stock>>>
 }

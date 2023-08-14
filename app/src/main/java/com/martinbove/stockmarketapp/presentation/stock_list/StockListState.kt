@@ -1,6 +1,6 @@
 package com.martinbove.stockmarketapp.presentation.stock_list
 
-import com.martinbove.stockmarketapp.domain.model.StockList
+import com.martinbove.stockmarketapp.domain.model.Stock
 
 /**
  * Created by Martín Bove on 11/08/2023.
@@ -8,7 +8,7 @@ import com.martinbove.stockmarketapp.domain.model.StockList
  */
 
 data class StockListState(
-    val companies: List<StockList> = emptyList(),
+    val companies: List<Stock> = emptyList(),
     val isLoading: Boolean = false,
     val isRefreshing: Boolean = false,
     val searchQuery: String = ""

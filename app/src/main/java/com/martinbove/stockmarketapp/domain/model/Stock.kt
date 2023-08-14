@@ -5,7 +5,7 @@ package com.martinbove.stockmarketapp.domain.model
  * E-mail: mbove77@gmail.com
  */
 
-data class StockList(
+data class Stock(
     val name: String,
     val symbol: String,
     val exchange: String

@@ -6,7 +6,7 @@ import com.martinbove.stockmarketapp.data.local.StockDataBase
 import com.martinbove.stockmarketapp.data.mapper.toDomain
 import com.martinbove.stockmarketapp.data.mapper.toEntity
 import com.martinbove.stockmarketapp.data.remote.StockApi
-import com.martinbove.stockmarketapp.domain.model.StockList
+import com.martinbove.stockmarketapp.domain.model.Stock
 import com.martinbove.stockmarketapp.domain.repository.StockRepository
 import com.martinbove.stockmarketapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -24,12 +24,12 @@ import javax.inject.Singleton
 class StockRepositoryImp @Inject constructor(
     private val api: StockApi,
     private val db: StockDataBase,
-    private val stockListParser: CSVParser<StockList>
+    private val stockListParser: CSVParser<Stock>
 ): StockRepository {
 
     private val dao = db.dao
 
-    override suspend fun getStockList(fetchFromRemote: Boolean, query: String): Flow<Resource<List<StockList>>> {
+    override suspend fun getStockList(fetchFromRemote: Boolean, query: String): Flow<Resource<List<Stock>>> {
        return flow {
 
            emit(Resource.Loading(true))
